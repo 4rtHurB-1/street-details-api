@@ -1,8 +1,12 @@
 import express from 'express';
 import serverless from 'serverless-http';
+import cors from 'cors';
 import { google } from 'googleapis';
 
 const app = express();
+
+app.use(cors());
+app.use(express.json());
 
 const CONFIG = {
   CONTACTS_SHEET_NAME: 'Контакти',
