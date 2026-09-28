@@ -19,8 +19,11 @@ const CONFIG = {
  * зберігаються в Environment Variables на Netlify.
  */
 function getGoogleAuth() {
-  const clientEmail = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL;
-  const privateKey = process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, '\n');
+  const clientEmail =
+    process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL;
+
+  let privateKey =
+    process.env.GOOGLE_PRIVATE_KEY;
 
   if (!clientEmail) {
     throw new Error(
@@ -31,6 +34,18 @@ function getGoogleAuth() {
   if (!privateKey) {
     throw new Error(
       'Не задано GOOGLE_PRIVATE_KEY'
+    );
+  }
+
+  // Якщо ключ записаний з \n
+  privateKey = privateKey.replace(/\\n/g, '\n').trim();
+
+  if (
+    !privateKey.startsWith('-----BEGIN PRIVATE KEY-----') ||
+    !privateKey.endsWith('-----END PRIVATE KEY-----')
+  ) {
+    throw new Error(
+      'GOOGLE_PRIVATE_KEY має неправильний формат'
     );
   }
 
