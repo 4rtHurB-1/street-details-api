@@ -1,0 +1,26 @@
+{
+  "name": "street-details-api",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/4rtHurB-1/street-details-api#readme",
+  "bugs": {
+    "url": "https://github.com/4rtHurB-1/street-details-api/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/4rtHurB-1/street-details-api.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@netlify/functions": "^6.0.0",
+    "express": "^5.2.1",
+    "googleapis": "^182.0.0",
+    "serverless-http": "^4.0.0"
+  }
+}
